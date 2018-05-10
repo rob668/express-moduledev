@@ -1,0 +1,36 @@
+{
+  "name": "express-moduledev",
+  "version": "1.0.4",
+  "description": "按模块划分目录，每个模块目录可拥有独立的controller、service、model、static等，底层采用了Express做为基础框架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/robs/RobJS"
+  },
+  "keywords": [
+    "express",
+    "module",
+    "route",
+    "orm"
+  ],
+  "author": "Rob",
+  "license": "ISC",
+  "dependencies": {
+    "consolidate": "^0.15.1",
+    "cookie-parser": "^1.4.3",
+    "csurf": "^1.9.0",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "glob": "^7.1.2",
+    "log4js": "^2.5.3",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "node.extend": "^2.0.0",
+    "nunjucks": "^3.1.2",
+    "sequelize": "^4.37.6",
+    "sequelize-cli": "^4.0.0"
+  }
+}
