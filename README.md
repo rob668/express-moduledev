@@ -36,25 +36,17 @@ app // 项目主目录
 ```javascript
 //index.js
 var em = require('express-moduledev');
-//指定seesion存储类型
-//var RedisStore = require('connect-redis')(em.session);
-var FileStore = require('session-file-store')(em.session);
 
 var config = {
-    "port":8000,
+    //指定端口，默认端口 8000
+    //"port":80,
     //使用环境 'default','development','production','testing'
-    "use_env": "development",
+    "use_env": "default",
     //顶级路由存放目录名称 默认routes
     //"router":"routes/",
-    "session_store": {
-        "secret": 'a345bc!',
-        "cookie": {  maxAge: 1000 * 60 * 60  },
-        "resave": true,
-        "saveUninitialized": false,
-        "store": new FileStore
-    }
 }
-//运行
+
+//启动服务
 em.Run(config)
 em.log.p('server runing..')
 ```
@@ -63,6 +55,11 @@ em.log.p('server runing..')
 ```js
 //这里使用了类的形式来定义配置
 //config/default.js
+var session = require('express-session');
+var FileStore = require('session-file-store')(session)
+//var em = require('express-moduledev');
+//var FileStore = require('session-file-store')(em.session)
+
 class Config{
     constructor(){
         //是否开启调试模式
@@ -76,6 +73,15 @@ class Config{
             "password": "root",
             "dialect": "mysql"
         };
+
+        //配置session_store
+        this.session_store = {
+            "secret": 'skdf093ks',
+            "cookie": {  maxAge: 1000 * 60 * 60 * 24},
+            "resave": true,
+            "saveUninitialized": false,
+            "store":new FileStore
+        }
     }
 }
 
@@ -83,12 +89,29 @@ module.exports = Config;
 
 //开发环境文件
 //config/development.js
+var session = require('express-session');
+var RedisStore = require('connect-redis')(session)
+
 var Config = require('./default');
+//这里需要继承Config
 class Development extends Config{
     constructor(){
         super();
         this.debug = true;
-        ....
+         this.database = {
+             ....
+         }
+        //配置session_store
+        this.session_store = {
+            "secret": 'skdf093ks',
+            "cookie": {  maxAge: 1000 * 60 * 60 * 24 },
+            "resave": true,
+            "saveUninitialized": false,
+            "store":new RedisStore({
+                "host": '127.0.0.1',
+                "port": '6300'
+            })
+        }
     }
 }
 module.exports = Development;
@@ -100,5 +123,8 @@ module.exports = Development;
 ## 开源地址
 https://github.com/rob668/express-moduledev
 
-## 查看DEMO
+## 在线DEMO
 http://www.robweb.cn/demos/express-moduledev-demo
+
+## DEMO源码
+https://github.com/rob668/express-moduledev-demo
