@@ -120,6 +120,9 @@ module.exports = Development;
 ```
 可以通过 em.config 获取配置选项
 
+## 版本更新
+1.0.7 支持modules下再分modules
+
 ## 开源地址
 https://github.com/rob668/express-moduledev
 
