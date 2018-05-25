@@ -122,6 +122,7 @@ module.exports = Development;
 
 ## 版本更新
 1.0.7 支持modules下再分modules
+1.0.8 修改modules下再分modules的部分bug
 
 ## 开源地址
 https://github.com/rob668/express-moduledev
