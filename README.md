@@ -120,9 +120,45 @@ module.exports = Development;
 ```
 可以通过 em.config 获取配置选项
 
+## 桥接文件
+有时我们需要加载自己的通用函数库，或者对模板进行扩展，可以通过桥接文件实现，在 app下新建bridge目录，该目录下的文件会自动加载（支持多目录多文件）
+```javascript
+//app/bridge/templateExt.js
+
+//对nunjucks模板扩展方法
+module.exports.tpl  = { //这里的 tpl 名字可以自己定义
+
+    //init将自动执行
+    init (app){
+        //获取配置信息
+        let envcfg = app.config.getEnv();
+        //获取模板对象
+        let tpl = app.get('tpl');
+        //添加一个模板全局变量
+        tpl.addGlobal("BaseUrl", envcfg.BaseUrl)
+        //添加一个日期过滤器
+        tpl.addFilter('formatTimestamp', function(t, f="yyyy-MM-dd HH:mm:ss"){
+            return new Date(t*1000).pattern(f)
+        })
+    }
+}
+
+//app/bridge/Comm.js
+//通用库文件
+module.exports.comm = {
+    test (){ }
+}
+
+//通过全局APP调用方法
+APP.comm.test()
+```
+
+
 ## 版本更新
 - 1.0.7 支持modules下再分modules
 - 1.0.8 修改modules下再分modules的部分bug
+- 1.0.9 添加DB SQL防注入功能
+- 1.0.10 新增自定义函数库加载，位于app/bridge目录下
 
 ## 开源地址
 https://github.com/rob668/express-moduledev
