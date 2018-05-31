@@ -81,6 +81,27 @@ class Config{
             "resave": true,
             "saveUninitialized": false,
             "store":new FileStore
+        };
+
+        //配置日志信息
+        //this.log4js = false //关闭日志
+        this.log4js = {
+            appenders: {
+                out: {
+                    type: 'stdout'
+                },
+                app: {
+                    type: "dateFile",
+                    filename: 'logs/log',
+                    pattern: "_yyyyMMdd.log",
+                    alwaysIncludePattern: true,
+                    maxLogSize: 20480,
+                    backups: 3,
+                }
+            },
+            categories: {
+                default: { appenders: ['out','app'], level: 'info' }
+            }
         }
     }
 }
@@ -159,6 +180,7 @@ APP.comm.test()
 - 1.0.8 修改modules下再分modules的部分bug
 - 1.0.9 添加DB SQL防注入功能
 - 1.0.10 新增自定义函数库加载，位于app/bridge目录下
+- 1.0.11 支持log4js日志配置功能
 
 ## 开源地址
 https://github.com/rob668/express-moduledev
