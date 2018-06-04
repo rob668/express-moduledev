@@ -181,6 +181,8 @@ APP.comm.test()
 - 1.0.9 添加DB SQL防注入功能
 - 1.0.10 新增自定义函数库加载，位于app/bridge目录下
 - 1.0.11 支持log4js日志配置功能
+- 1.0.12 优化数据库加载
+- 1.0.13 修复模块加载时指定静态资源目录无法加载的问题
 
 ## 开源地址
 https://github.com/rob668/express-moduledev
