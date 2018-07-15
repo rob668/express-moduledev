@@ -183,6 +183,7 @@ APP.comm.test()
 - 1.0.11 支持log4js日志配置功能
 - 1.0.12 优化数据库加载
 - 1.0.13 修复模块加载时指定静态资源目录无法加载的问题
+- 1.0.15 修复sequelize兼容问题
 
 ## 开源地址
 https://github.com/rob668/express-moduledev
