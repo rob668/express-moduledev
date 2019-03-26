@@ -1,6 +1,6 @@
 {
   "name": "express-moduledev",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "按模块划分目录，每个模块目录可拥有独立的controller、service、model、static等，底层采用了Express做为基础框架",
   "main": "index.js",
   "scripts": {
