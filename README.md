@@ -186,7 +186,7 @@ APP.comm.test()
 - 1.0.15 修复sequelize兼容问题
 - 1.0.16 修复在子目录启动项目时，加载配置文件会读取根目录导致加载失败的问题
 - 1.0.18 支持配置文件设置静态目录 static_folder
-
+- 1.0.21 去掉根据文件路径获取模块名，modules里的路由应该写到modules里去
 ## 开源地址
 https://github.com/rob668/express-moduledev
 
