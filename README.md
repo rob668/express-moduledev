@@ -188,6 +188,7 @@ APP.comm.test()
 - 1.0.18 支持配置文件设置静态目录 static_folder
 - 1.0.21 去掉根据文件路径获取模块名，modules里的路由应该写到modules里去
 - 1.0.22 添加路由配置允许设定是否跳过csrf检测
+- 1.0.24 把检测csrf的方法放移到了router.js里
     ```js
     //设置chkcsrf为flase表示跳过csrf检测，限POST方法
     { prefix:"/test",  ctrl:"test", action:"test" , method:["GET", "POST"],"chkcsrf": false}
