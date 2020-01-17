@@ -193,6 +193,12 @@ APP.comm.test()
     //设置chkcsrf为flase表示跳过csrf检测，限POST方法
     { prefix:"/test",  ctrl:"test", action:"test" , method:["GET", "POST"],"chkcsrf": false}
     ```
+- 1.0.25 修复在路由配置中，如果指定url_prefix前缀，prefix无法设置数组的bug
+    ```js
+    exports.url_prefix = "/abc"
+    //prefix 可以使用数组定义 ,路由可以命中 /abc 也可以命中 /abc/index.html
+    { prefix: ["/","/index.html"],  ctrl:"test", action:"test"}
+    ```
 
 ## 开源地址
 https://github.com/rob668/express-moduledev
